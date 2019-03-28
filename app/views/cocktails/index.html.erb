@@ -1,0 +1,9 @@
+<div class=container>
+<ul><% @cocktails.each do |cocktail| %>
+  <li><%= link_to cocktail.name, cocktail_path(cocktail)%></li>
+  <% end %>
+</ul>
+<footer>
+<%= link_to "New", new_cocktail_path %>
+</footer>
+</div>
