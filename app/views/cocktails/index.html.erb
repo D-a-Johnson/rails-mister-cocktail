@@ -1,14 +1,36 @@
-<div class=container>
-  <div class = row>
+<div class= "banner"  style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+   url('<%= cl_image_path("liquor.jpg")%>')">
+  <div class="banner-content">
+    <div class="banner-logo"><%= cl_image_tag("liquor2.png") %></div>
+    <%= link_to "Add Cocktail", new_cocktail_path, class: 'btn btn-primary btn-lg' %>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
     <% @cocktails.each do |cocktail| %>
+      <% photo_url = cocktail.photo %>
       <div class="col-xs-12 col-sm-4">
-        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-          <%= link_to cocktail.name, cocktail_path(cocktail)%>
+        <% photo_url = cl_image_path("default.png") if cocktail.photo_url.nil? %>
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= photo_url %>);">
+          <div class="card-description">
+            <!-- <%= link_to cocktail.name, cocktail_path(cocktail), class: "card-link"%> -->
+            <h2><%= cocktail.name %></h2>
+            <% unless cocktail.ingredients.blank? %>
+              <% ingredients = "" %>
+              <% cocktail.ingredients.each_with_index do |v, i| %>
+                <% if i < (cocktail.ingredients.length - 1) %>
+                  <% ingredients = ingredients + "#{v.name}, " %>
+                <% else %>
+                  <% ingredients = ingredients + v.name %>
+                <% end %>
+              <% end %>
+              <p><%= ingredients %></p>
+            <% end %>
+          </div>
+          <%= link_to cocktail.name, cocktail_path(cocktail), class: "card-link"%>
         </div>
       </div>
     <% end %>
   </div>
-  <footer>
-    <%= link_to "New", new_cocktail_path %>
-  </footer>
 </div>
