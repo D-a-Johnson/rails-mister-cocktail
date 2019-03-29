@@ -1,7 +1,7 @@
 class CocktailsController < ApplicationController
   before_action :find_cocktail, only: [:show, :edit, :destroy, :update]
   def index
-    @cocktails = Cocktail.all
+    @cocktails = Cocktail.all.sort_by { |c| c.name }
   end
 
   def show

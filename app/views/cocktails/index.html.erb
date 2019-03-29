@@ -1,9 +1,14 @@
 <div class=container>
-<ul><% @cocktails.each do |cocktail| %>
-  <li><%= link_to cocktail.name, cocktail_path(cocktail)%></li>
-  <% end %>
-</ul>
-<footer>
-<%= link_to "New", new_cocktail_path %>
-</footer>
+  <div class = row>
+    <% @cocktails.each do |cocktail| %>
+      <div class="col-xs-12 col-sm-4">
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+          <%= link_to cocktail.name, cocktail_path(cocktail)%>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <footer>
+    <%= link_to "New", new_cocktail_path %>
+  </footer>
 </div>
