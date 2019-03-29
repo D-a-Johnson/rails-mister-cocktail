@@ -1,0 +1,17 @@
+.banner {
+  color: white;
+  text-align: center;
+  height: calc(100vh - 70px);
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  background-color: gray;
+}
+
+.banner-logo img {
+  max-width: 60%;
+  height: auto;
+  margin-bottom: 30px;
+}
